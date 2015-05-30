@@ -6,6 +6,29 @@ angular.module('starter.controllers', ['angularMoment'])
 
 	//var now = moment().format('h:mm:ss a');
 
+
+//Get phone UUID
+   var start = device.uuid;
+
+//STORE TO LOCAL STORAGE
+
+  var start = new Date();
+    $scope.startedAt = start;
+
+    //Put the date/time of last load into localStorage
+    var priorCount = window.localStorage["ourCount"]; //.key("ourCount");
+    //console.log("priorCount");
+    //console.log(priorCount);
+    priorCount = Number(priorCount);
+    //console.log("prior count Num  :: ", priorCount);
+    var nextCount = priorCount += 1;
+    //console.log("nextCount");
+    //console.log(nextCount);
+
+    window.localStorage.setItem("ourCount",nextCount);
+
+    window.localStorage.setItem(nextCount.toString(), "Hello at "+start);
+
 //THIS SWIPES US TO A NEW PAGE
   $scope.swipeRight = function(){
     //where we choose the place to route to
