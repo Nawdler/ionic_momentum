@@ -2,7 +2,7 @@
 angular.module('starter.controllers', ['angularMoment'])
 
 //.controller('DashCtrl', 'moment', 'angularMoment', function($scope, moment, angularMoment) {
-.controller('DashCtrl', ['$scope', 'moment', function($scope, moment) {
+.controller('DashCtrl', ['$scope', 'moment', '$interval', function($scope, moment, $interval) {
 
 	//var now = moment().format('h:mm:ss a');
 
@@ -11,16 +11,42 @@ angular.module('starter.controllers', ['angularMoment'])
 
 	$scope.momentResult = moment().format('h:mm:ss');
 
-	$scope.startTimer = function(){
-//	var moment = require('moment');
-		var start = new Date();
-		$scope.startedAt = start;
+// 	$scope.startTimer = function(){
+// //	var moment = require('moment');
+// 		var start = new Date();
+// 		$scope.startedAt = start;
 
-	}
+// 	}
 
-  var now = moment();
+var count = 0;
 
-  $scope.currentTime = now; //updateCurrentTime();
+var pulsar; 
+  $scope.start = function(){
+   pulsar = $interval(updateTime, 1000);
+  }
+
+  function updateTime(){
+    var now = moment();
+    count +=1;
+    $scope.currentTime = now;
+    //$("#goesHere").html(now);
+    console.log(now);
+    console.log(count);
+    //console.log("update time");
+    //updateCurrentTime();
+  }
+
+$scope.stop = function(){
+  $interval.cancel(pulsar);
+}
+
+  // function timer(){
+  //   setInterval(function(){updateTime()},1000)
+  // };
+
+  // timer();
+
+
 
 // function updateCurrentTime(){
 //     now = moment().format('h:mm:ss');
@@ -32,7 +58,7 @@ angular.module('starter.controllers', ['angularMoment'])
 }])
 
 
-// WORKING 
+// WORKING
 // .controller('DashCtrl', function($scope) {
 
 // 	//var now = moment().format('h:mm:ss a');
