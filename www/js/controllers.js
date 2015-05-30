@@ -2,12 +2,15 @@
 angular.module('starter.controllers', ['angularMoment'])
 
 //.controller('DashCtrl', 'moment', 'angularMoment', function($scope, moment, angularMoment) {
-.controller('DashCtrl', ['$scope', 'moment', '$interval', function($scope, moment, $interval) {
+.controller('DashCtrl', ['$scope', 'moment', '$interval', '$state', function($scope, moment, $interval, $state) {
 
 	//var now = moment().format('h:mm:ss a');
 
-
-
+//THIS SWIPES US TO A NEW PAGE
+  $scope.swipeRight = function(){
+    //where we choose the place to route to
+    $state.go("tab.chats");
+  }
 
 	$scope.momentResult = moment().format('h:mm:ss');
 
@@ -20,7 +23,7 @@ angular.module('starter.controllers', ['angularMoment'])
 
 var count = 0;
 
-var pulsar; 
+var pulsar;
   $scope.start = function(){
    pulsar = $interval(updateTime, 1000);
   }
