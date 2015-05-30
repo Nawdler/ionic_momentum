@@ -1,0 +1,30 @@
+
+
+<ion-view view-title="Dashboard">
+  <ion-content class="padding">
+    <div class="list card" ng-click="startTimer()">
+      <div class="item item-divider">Walk to bus stop</div>
+      <div class="item item-body">
+        <div ng-bind="startedAt">
+          <b>Has not started yet</b>
+        </div>
+      </div>
+    </div>
+    <div class="list card">
+      <div class="item item-divider">Current time</div>
+      <div class="item item-body" ng-bind="momentResult">
+        <div>
+    test
+        </div>
+      </div>
+    </div>
+    <div class="list card">
+      <div class="item item-divider">Upcoming</div>
+      <div class="item item-body" ng-bind="currentTime">
+        <div>
+          You have <b>29</b> meetings on your calendar tomorrow.
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
